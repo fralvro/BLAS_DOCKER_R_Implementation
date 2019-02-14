@@ -1,4 +1,4 @@
-### Versión de Ubuntu
+"### Versión de Ubuntu
 FROM ubuntu:18.04
 
 RUN apt-get update -y && apt-get install -y build-essential \
@@ -12,16 +12,30 @@ RUN apt-get update -y && apt-get install -y build-essential \
 
 RUN sudo apt-get install libblas-dev libblas3 libatlas-base-dev\
  libatlas3-base libblas-test libblasr libblasr-dev libopenblas-base\
- libopenblas-dev r-base
+ libopenblas-dev
+
+
 
 ### Instalo paqueterías necesarias para R-benchmark-25.R 
 RUN echo "install.packages('SuppDists', dep=TRUE, repo='http://cran.stat.ucla.edu')" |\
  sudo R --vanilla 
 
 ### Copio los scrips que tengo en mi carpeta
-COPY . /scripts/TripleF_benchmark.R
-COPY . /scripts/R-benchmark-25.R
+COPY TripleF_benchmark.sh /TripleF_benchmark.sh
+COPY R-benchmark.sh /R-benchmark-25.sh
 
 
+RUN sudo apt-get install r-base --with-blas="libopenblas-base"
 
+CMD["/TripleF_benchmark.sh"]
+CMD["/R-benchmark-25.sh"]
 
+RUN sudo apt-get install r-base --with-blas="libatlas3-base"
+
+CMD["/TripleF_benchmark.sh"]
+CMD["/R-benchmark-25.sh"]
+
+RUN sudo apt-get install r-base --without-blas
+
+CMD["/TripleF_benchmark.sh"]
+CMD["/R-benchmark-25.sh"]
