@@ -1,6 +1,6 @@
 #! /bin/sh
 
-sudo apt-get install -y r-base | \
+sudo apt-get install -y libopenblas-base r-base | \
 R -e '
 
 install.packages('SuppDists', dep=TRUE, repo='http://cran.stat.ucla.edu')
