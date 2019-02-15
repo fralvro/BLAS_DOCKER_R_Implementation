@@ -11,11 +11,11 @@ sudo docker run --rm -i -t -v my/repository/folder:/home/performance r-performan
 If everything goes well, you will start in the bash system of the newly created docker image. Then, you can run the performance tests with the command:
 
 ```shell
-sh home/performance/test.sh --option
+sh /home/performance/test.sh --option
 ```
 
 The available options are:
 * `--standard` to run the test using the default BLAS system.
-* `--openblas` to run the test using the optimized OPenBLAS system.
+* `--openblas` to run the test using the optimized OpenBLAS system.
 * `--all` to run the test using both systems.
 * `--help` to get more detailed descriptions of the commands.
