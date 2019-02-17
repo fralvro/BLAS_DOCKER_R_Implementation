@@ -1,15 +1,11 @@
-FROM ubuntu:18.04
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN apt-get update -y && apt-get install -y build-essential \
-	nano \
-	man \
-	sudo \
-	openssh-server \
-	sshpass
+FROM rocker/r-ver:3.5.1
 
-RUN apt-get install -y r-base
 
-### Copio los scrips que tengo en mi carpeta
-ADD triplef_benchmark.sh /
-RUN /triplef_benchmark.sh
+RUN apt-get update \ 
+    && apt-get install -y libopenblas-base
+
+
+RUN install2.r --error \
+    microbenchmark \
+    SuppDists

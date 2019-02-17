@@ -1,3 +1,4 @@
+
 # R Benchmark 2.5 (06/2008) [Simon Urbanek]
 # version 2.5: scaled to get roughly 1s per test, R 2.7.0 @ 2.6GHz Mac Pro
 # R Benchmark 2.4 (06/2008) [Simon Urbanek]
@@ -23,7 +24,7 @@
 # by Stephan Steinhaus (stst@informatik.uni-frankfurt.de) 
 # Reference for Escoufier's equivalents vectors (test III.5):
 # Escoufier Y., 1970. Echantillonnage dans une population de variables
-# aleatoires r?elles. Publ. Inst. Statis. Univ. Paris 19 Fasc 4, 1-47.
+# aleatoires r�elles. Publ. Inst. Statis. Univ. Paris 19 Fasc 4, 1-47.
 #
 # type source("c:/<dir>/R2.R") to start the test
 
@@ -39,7 +40,7 @@ Runif <- runif
 # If you don't have SuppDists, you can use: Rnorm <- rnorm
 #b <- rziggurat(10, new.start=TRUE)	# Init. the generator
 Rnorm <- rnorm
-remove("a", "b")
+#remove("a", "b")
 options(object.size=100000000)
 
 cat("\n\n   R Benchmark 2.5\n")
@@ -383,4 +384,3 @@ cat(c("Total time for all 15 tests_________________________ (sec): ", sum(times)
 cat(c("Overall mean (sum of I, II and III trimmed means/3)_ (sec): ", exp(mean(log(times[2:4, ]))), "\n"))
 remove("cumulate", "timing", "times", "runs", "i")
 cat("                      --- End of test ---\n\n")   
-
