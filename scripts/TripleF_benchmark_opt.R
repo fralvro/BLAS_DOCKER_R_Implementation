@@ -391,7 +391,7 @@ data_cumsum <- ddply(data_sorted, "Process", transform, label_ypos = cumsum(time
 
 
 # Create the bar plot
-g <- ggplot(data = data_cumsum, aes(x = Process, y = time_type, fill = opt_std)) + geom_bar(stat = "identity") + geom_text(aes(label = time_type, y = label_ypos), vjust = 1.6, color = "black", size = 3.5) + coord_flip()
+g <- ggplot(data = data_cumsum, aes(x = Process, y = time_type, fill = opt_std)) + geom_bar(stat = "identity") + geom_text(aes(label = label_ypos, y = time_type), vjust = 1.6, color = "black", size = 3.5) + coord_flip()
 
 g <- g + labs(y="Time", title = "Standard BLAS Vs. Optimized OpenBLAS")
 
