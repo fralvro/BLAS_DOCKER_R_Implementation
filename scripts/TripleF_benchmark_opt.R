@@ -7,20 +7,22 @@ times <- rep(0, 15); dim(times) <- c(5,3)
 require(Matrix)		# Optimized matrix operations
 require(SuppDists)
 require(ggplot2)
-require(lubridate)
-Runif<- runif
+require(plyr)
+require(dplyr)
+
 Rnorm <- rnorm
+Runif <- runif
 #remove("a", "b")
 options(object.size=100000000)
 
 #cat("\n\n   R Benchmark 2.5\n")
 #cat("   ===============\n")
-cat(c("Number of times each test is run__________________________: ", runs))
+#cat(c("Number of times each test is run__________________________: ", runs))
 
 
 
-cat("   I. Matrix calculation\n")
-cat("   ---------------------\n")
+#cat("   I. Matrix calculation\n")
+#cat("   ---------------------\n")
 
 
 # (1)
@@ -125,8 +127,8 @@ trimed_geom_1 <- exp(mean(log(times[2:4, 1])))
 #cat("                      --------------------------------------------\n")
 #cat(c("                 Trimmed geom. mean (2 extremes eliminated): ", exp(mean(log(times[2:4, 1]))), "\n\n"))
 
-cat("   II. Matrix functions\n")
-cat("   --------------------\n")
+#cat("   II. Matrix functions\n")
+#cat("   --------------------\n")
 
 
 # (1)
@@ -230,8 +232,8 @@ trimed_geom_2 <- exp(mean(log(times[2:4, 2])))
 #cat("                      --------------------------------------------\n")
 #cat(c("                Trimmed geom. mean (2 extremes eliminated): ", exp(mean(log(times[2:4, 2]))), "\n\n"))
 
-cat("   III. Programmation\n")
-cat("   ------------------\n")
+#cat("   III. Programmation\n")
+#cat("   ------------------\n")
 
 
 # (1)
@@ -364,6 +366,36 @@ type <- c(1,1,1,1,1,2,2,2,2,2,3,3,3,3,3)
 time_type <- c(timing_1.1,timing_1.2,timing_1.3,timing_1.4,timing_1.5,
                timing_2.1,timing_2.2,timing_2.3,timing_2.4,timing_2.5,
                timing_3.1,timing_3.2,timing_3.3,timing_3.4,timing_3.5)
-dfr_ind <- data.frame(type,time_type)
 
-write.csv(dfr_ind, file = "data/Data_1.csv",row.names=F)
+Process <- c('Creation, transp., deformation of a 2500x2500 matrix','2400x2400 normal distributed random matrix ^1000',
+         'Sorting of 7,000,000 random values','2800x2800 cross-product matrix',
+         'Linear regr. over a 3000x3000 matrix','FFT over 2,400,000 random values',
+         'Eigenvalues of a 640x640 random matrix', 'Determinant of a 2500x2500 random matrix',
+         'Cholesky decomposition of a 3000x3000 matrix','Inverse of a 1600x1600 random matrix',
+         '3,500,000 Fibonacci numbers calculation','Creation of a 3000x3000 Hilbert matrix',
+         'Grand common divisors of 400,000 pairs','Creation of a 500x500 Toeplitz matrix',
+         'Escoufiers method on a 45x45 matrix')
+
+dfr_ind <- data.frame(type,time_type)
+dfr_ind$opt_std <- rep("opt",15)
+dfr_ind$Process <- Process
+dfr1 <- read.csv(file = "data/Data_1.csv")
+dfr1$opt_std <- rep("std",15)
+dfr1$Process <- Process
+data_g <- rbind(dfr_ind, dfr1)
+
+data_sorted <- arrange(data_g, Process, opt_std)
+
+data_sorted$time_type <- round(data_cumsum$time_type,2)
+data_cumsum <- ddply(data_sorted, "Process", transform, label_ypos = cumsum(time_type))
+
+
+# Create the bar plot
+g <- ggplot(data = data_cumsum, aes(x = Process, y = time_type, fill = opt_std)) + geom_bar(stat = "identity") + geom_text(aes(label = time_type, y = label_ypos), vjust = 1.6, color = "black", size = 3.5) + coord_flip()
+
+g <- g + labs(y="Time", title = "Standard BLAS Vs. Optimized OpenBLAS")
+
+ggsave('plot.jpg',plot=g,scale=1,dpi=320, width=35,height = 25, units = "cm")
+  
+cat("                      --- Open plot.jpg in repository ---\n\n")   
+
