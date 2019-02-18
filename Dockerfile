@@ -12,5 +12,8 @@ RUN apt-get update \
 
 RUN install2.r --error \
     microbenchmark \
-    SuppDists
+    SuppDists \
+    ggplot2 \
+    plyr \
+    dplyr
 

@@ -7,7 +7,6 @@ times <- rep(0, 15); dim(times) <- c(5,3)
 require(Matrix)		# Optimized matrix operations
 require(SuppDists)
 require(ggplot2)
-require(lubridate)
 Runif<- runif
 Rnorm <- rnorm
 #remove("a", "b")
@@ -15,12 +14,12 @@ options(object.size=100000000)
 
 #cat("\n\n   R Benchmark 2.5\n")
 #cat("   ===============\n")
-cat(c("Number of times each test is run__________________________: ", runs))
+#cat(c("Number of times each test is run__________________________: ", runs))
 
 
 
-cat("   I. Matrix calculation\n")
-cat("   ---------------------\n")
+#cat("   I. Matrix calculation\n")
+#cat("   ---------------------\n")
 
 
 # (1)
@@ -125,8 +124,8 @@ trimed_geom_1 <- exp(mean(log(times[2:4, 1])))
 #cat("                      --------------------------------------------\n")
 #cat(c("                 Trimmed geom. mean (2 extremes eliminated): ", exp(mean(log(times[2:4, 1]))), "\n\n"))
 
-cat("   II. Matrix functions\n")
-cat("   --------------------\n")
+#cat("   II. Matrix functions\n")
+#cat("   --------------------\n")
 
 
 # (1)
@@ -230,8 +229,8 @@ trimed_geom_2 <- exp(mean(log(times[2:4, 2])))
 #cat("                      --------------------------------------------\n")
 #cat(c("                Trimmed geom. mean (2 extremes eliminated): ", exp(mean(log(times[2:4, 2]))), "\n\n"))
 
-cat("   III. Programmation\n")
-cat("   ------------------\n")
+#cat("   III. Programmation\n")
+#cat("   ------------------\n")
 
 
 # (1)
@@ -366,4 +365,4 @@ time_type <- c(timing_1.1,timing_1.2,timing_1.3,timing_1.4,timing_1.5,
                timing_3.1,timing_3.2,timing_3.3,timing_3.4,timing_3.5)
 dfr_ind <- data.frame(type,time_type)
 
-write.csv(dfr_ind, file = "data/Data_1.csv",row.names=F)
+write.csv(dfr_ind, file = "/home/performance/Data_1.csv",row.names=F)

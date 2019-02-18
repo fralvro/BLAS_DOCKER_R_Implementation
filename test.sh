@@ -28,14 +28,13 @@ then
         echo 'Standard Method Graphic Mode'
         echo '*************************************'
         update-alternatives --quiet --set libblas.so.3 /usr/lib/libblas/libblas.so.3    
-        pv Rscript /home/performance/scripts/TripleF_benchmark.R
+        Rscript /home/performance/scripts/TripleF_benchmark.R
         echo '*************************************'
         echo 'Optimized method Graphic Mode'
         echo '*************************************'
         update-alternatives --quiet --set libblas.so.3 /usr/lib/openblas-base/libblas.so.3      
-        pv Rscript /home/performance/scripts/TripleF_benchmark_opt.R
-        mv /home/performance/scripts/plot.jpg /home/performance/plot.jpg
-        rm /home/performance/scripts/data
+        Rscript /home/performance/scripts/TripleF_benchmark_opt.R
+        rm /home/performance/Data_1.csv
 
 elif [ "${INPUT}" = '--help' ]
 then
