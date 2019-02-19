@@ -6,14 +6,12 @@ ENV SPARKLYR_VERSION 0.8.4
 RUN cat /etc/os-release 
 
 RUN apt-get update \ 
-    && apt-get install -y libopenblas-base\
-    -y pv
+    && apt-get install -y libopenblas-base
 
 
 RUN install2.r --error \
     microbenchmark \
     SuppDists \
-    ggplot2 \
-    plyr \
+    ggplot2\
     dplyr
 

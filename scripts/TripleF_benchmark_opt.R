@@ -7,7 +7,6 @@ times <- rep(0, 15); dim(times) <- c(5,3)
 require(Matrix)		# Optimized matrix operations
 require(SuppDists)
 require(ggplot2)
-require(plyr)
 require(dplyr)
 
 Rnorm <- rnorm
@@ -377,24 +376,21 @@ Process <- c('Creation, transp., deformation of a 2500x2500 matrix','2400x2400 n
          'Escoufiers method on a 45x45 matrix')
 
 dfr_ind <- data.frame(type,time_type)
-dfr_ind$opt_std <- rep("opt",15)
+dfr_ind$method <- rep("opt",15)
 dfr_ind$Process <- Process
 dfr1 <- read.csv(file = "/home/performance/Data_1.csv")
-dfr1$opt_std <- rep("std",15)
+dfr1$method <- rep("std",15)
 dfr1$Process <- Process
 data_g <- rbind(dfr_ind, dfr1)
 
-data_sorted <- arrange(data_g, Process, opt_std)
+data_sorted <- arrange(data_g, Process, method)
 
 data_sorted$time_type <- round(data_sorted$time_type,2)
-data_cumsum <- ddply(data_sorted, "Process", transform, label_ypos = cumsum(time_type))
 
-
-# Create the bar plot
-g <- ggplot(data = data_cumsum, aes(x = Process, y = time_type, fill = opt_std)) + geom_bar(stat = "identity") + geom_text(aes(label = label_ypos, y = time_type), vjust = 1.6, color = "black", size = 3.5) + coord_flip()
-
+###Create the bar plot
+g <- ggplot(data = data_sorted, aes(x = Process, y = time_type, fill = method)) + geom_bar(stat = "identity",position = position_dodge()) 
+g <- g + geom_text(aes(label = time_type), vjust = 0, color = "black", size = 3.5) + coord_flip()
 g <- g + labs(y="Time", title = "Standard BLAS Vs. Optimized OpenBLAS")
-
 ggsave('/home/performance/plot.jpg',plot=g,scale=1,dpi=320, width=35,height = 25, units = "cm")
   
 cat("                      --- Open plot.jpg in repository ---\n\n")   
