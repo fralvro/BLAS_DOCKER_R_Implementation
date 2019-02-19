@@ -8,11 +8,7 @@ RUN apt-get update \
 
 RUN install2.r --error \
     microbenchmark \
-<<<<<<< HEAD
-    SuppDists
-=======
     SuppDists \
     ggplot2\
     dplyr
 
->>>>>>> fralvro
