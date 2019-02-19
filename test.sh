@@ -10,6 +10,10 @@ elif [ "${INPUT}" = '--openblas' ]
 then
 	update-alternatives --quiet --set libblas.so.3 /usr/lib/openblas-base/libblas.so.3	
 	Rscript /home/performance/scripts/R-benchmark-25.R
+elif [ "${INPUT}" = '--atlas' ]
+then
+	update-alternatives --quiet --set libblas.so.3 /usr/lib/atlas-base/atlas/libblas.so.3	
+	Rscript /home/performance/scripts/R-benchmark-25.R
 elif [ "${INPUT}" = '--all' ]
 then
 	echo '*************************************'
@@ -18,10 +22,17 @@ then
 	update-alternatives --quiet --set libblas.so.3 /usr/lib/libblas/libblas.so.3	
 	Rscript /home/performance/scripts/R-benchmark-25.R
 	echo '*************************************'
-	echo 'Optimized method'
+	echo 'Optimized BLAS method'
 	echo '*************************************'
 	update-alternatives --quiet --set libblas.so.3 /usr/lib/openblas-base/libblas.so.3	
 	Rscript /home/performance/scripts/R-benchmark-25.R
+	echo '*************************************'
+	echo 'Optimized ATLAS method'
+	echo '*************************************'
+	update-alternatives --quiet --set libblas.so.3 /usr/lib/atlas-base/atlas/libblas.so.3	
+	Rscript /home/performance/scripts/R-benchmark-25.R
+
+	
 elif [ "${INPUT}" = '--help' ]
 then
 	echo 'Runs a series of matrix operations in the R language in order to test performance of the system.'
@@ -31,6 +42,7 @@ then
 	echo 'The available arguments are:'
 	echo '   --standard		Runs the benchmark script using the default libblas package.'
 	echo '   --openblas		Runs the benchmark script using the optimized libopenblas package.'
+	echo '   --atlas		Runs the benchmark script using the optimized libopenblas package.'
 	echo '   --all		Runs the benchmark script using all available methods.'
 	echo '   --help		Shows this document.'
 else
