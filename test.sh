@@ -43,6 +43,11 @@ then
         echo '*************************************'
         update-alternatives --quiet --set libblas.so.3 /usr/lib/openblas-base/libblas.so.3      
         Rscript /home/performance/scripts/TripleF_benchmark_opt.R
+        echo '*************************************'
+        echo 'Atlas method Graphic Mode'
+        echo '*************************************'
+        update-alternatives --quiet --set libblas.so.3 /usr/lib/openblas-base/l$
+        Rscript /home/performance/scripts/TripleF_benchmark_atl.R
         rm /home/performance/Data_1.csv
 
 elif [ "${INPUT}" = '--help' ]

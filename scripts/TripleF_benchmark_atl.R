@@ -376,24 +376,22 @@ Process <- c('Creation, transp., deformation of a 2500x2500 matrix','2400x2400 n
          'Escoufiers method on a 45x45 matrix')
 
 dfr_ind <- data.frame(type,time_type)
-dfr_ind$method <- rep("opt",15)
+dfr_ind$method <- rep("atl",15)
 dfr_ind$Process <- Process
 dfr1 <- read.csv(file = "/home/performance/Data_1.csv")
-dfr1$method <- rep("std",15)
 dfr1$Process <- Process
 data_g <- rbind(dfr_ind, dfr1)
 
 data_sorted <- arrange(data_g, Process, method)
 
 data_sorted$time_type <- round(data_sorted$time_type,2)
-write.csv(data_sorted, file = "/home/performance/Data_1.csv",row.names=F)
-
 
 ###Create the bar plot
-#g <- ggplot(data = data_sorted, aes(x = Process, y = time_type, fill = method)) + geom_bar(stat = "identity",position = position_dodge()) 
-#g <- g + geom_text(aes(label = time_type), vjust = 0, color = "black", size = 3.5) + coord_flip()
-#g <- g + labs(y="Time", title = "Standard BLAS Vs. Optimized OpenBLAS")
-#ggsave('/home/performance/plot.jpg',plot=g,scale=1,dpi=320, width=35,height = 25, units = "cm")
+g <- ggplot(data = data_sorted, aes(x = Process, y = time_type, fill = method)) + geom_bar(stat = "identity",position = position_dodge()) 
+g <- g + coord_flip()
+#g<-g+ geom_text(aes(label = time_type), vjust = 1,hjust=0.5, color = "black", size = 3) 
+g <- g + labs(y="Time", title = "BLAS (Standard) / OpenBLAS / ATLAS")
+ggsave('/home/performance/plot.jpg',plot=g,scale=1,dpi=320, width=35,height = 25, units = "cm")
   
-#cat("                      --- Open plot.jpg in repository ---\n\n")   
+cat("                      --- Open file plot.jpg in repository ---\n\n")   
 
