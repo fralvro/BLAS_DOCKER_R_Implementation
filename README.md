@@ -17,6 +17,7 @@ sh /home/performance/test.sh --option
 The available options are:
 * `--standard` to run the test using the default BLAS system.
 * `--openblas` to run the test using the optimized OpenBLAS system.
+* `--atlas` to run the test using the optimized ATLAS system.
 * `--all` to run the test using both systems.
 * `--all_graphic` to run the test using both systems and displaying a graphical comparison.
 * `--help` to get more detailed descriptions of the commands.
