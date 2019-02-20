@@ -31,7 +31,6 @@ then
 	echo '*************************************'
 	update-alternatives --quiet --set libblas.so.3 /usr/lib/atlas-base/atlas/libblas.so.3	
 	Rscript /home/performance/scripts/R-benchmark-25.R
-
 elif [ "${INPUT}" = '--all_graphic' ]
 then
         echo '*************************************'
