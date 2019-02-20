@@ -7,7 +7,9 @@ RUN apt-get update \
     && apt-get install -y libatlas3-base
 
 
-
 RUN install2.r --error \
     microbenchmark \
-    SuppDists
+    SuppDists \
+    ggplot2\
+    dplyr
+
