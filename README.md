@@ -1,6 +1,6 @@
 # BLAS_DOCKER_R_Implementation
 
-This repository contains a docker container which shows the differences in performance using the standard Basic Linear Algebra System (BLAS) that comes with the Ubuntu version of R (and other implementations) and OpenBLAS, an optimized BLAS system.
+This repository contains a docker container which shows the differences in performance using the standard Basic Linear Algebra System (BLAS) that comes with the Ubuntu 18.04 version of R (and other implementations) and OpenBLAS, an optimized BLAS system.
 
 To build the docker and run the performance tests, you need to clone this repository and run the following commands:
 
