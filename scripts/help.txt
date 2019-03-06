@@ -1,0 +1,16 @@
+
+Runs one of two possible performance tests for matrix operations in R version 
+3.5.1 in order to test performance of different Basic Linear Algebra System 
+(BLAS) packages.
+The results of the test are displayed on the terminal screen.
+
+The available arguments are:'
+   -t		performance test to run. The two tests available are Urbanek's 
+		R Benchmark 2.5 ('urbanek' or 'u') and López and Ruiz Algebraic 
+		Packages Benchmark ('lp' or 'lopez-ruiz').
+   -m		package used to run the performance test. Available options are
+		the default libblas package ('s' or 'standard'), the optimized 
+		libopenblas package ('o' or 'open') and the optimized libatlas3 
+		package ('a' or 'atlas').
+   -h		Shows this document.
+
