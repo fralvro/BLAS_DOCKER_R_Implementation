@@ -68,6 +68,7 @@ for (i in 1:runs) {
 timing <- cumulate/runs
 times[1, 1] <- timing
 cat(c("Creation, transp., deformation of a 2500x2500 matrix (sec): ", timing, "\n"))
+df <- data.frame(test='Creation, transp., deformation of a 2500x2500 matrix', time = as.numeric(timing))
 remove("a", "b")
 if (R.Version()$os == "Win32" || R.Version()$os == "mingw32") flush.console()
 
@@ -84,6 +85,8 @@ for (i in 1:runs) {
 timing <- cumulate/runs
 times[2, 1] <- timing
 cat(c("2400x2400 normal distributed random matrix ^1000____ (sec): ", timing, "\n"))
+t <- data.frame(test='2400x2400 normal distributed random matrix ^1000', time = as.numeric(timing))
+df <- rbind(df, t)
 remove("a", "b")
 if (R.Version()$os == "Win32" || R.Version()$os == "mingw32") flush.console()
 
@@ -101,6 +104,8 @@ for (i in 1:runs) {
 timing <- cumulate/runs
 times[3, 1] <- timing
 cat(c("Sorting of 7,000,000 random values__________________ (sec): ", timing, "\n"))
+t <- data.frame(test='Sorting of 7,000,000 random values', time = as.numeric(timing))
+df <- rbind(df, t)
 remove("a", "b")
 if (R.Version()$os == "Win32" || R.Version()$os == "mingw32") flush.console()
 
@@ -117,6 +122,8 @@ for (i in 1:runs) {
 timing <- cumulate/runs
 times[4, 1] <- timing
 cat(c("2800x2800 cross-product matrix (b = a' * a)_________ (sec): ", timing, "\n"))
+t <- data.frame(test='2800x2800 cross-product matrix', time = as.numeric(timing))
+df <- rbind(df, t)
 remove("a", "b")
 if (R.Version()$os == "Win32" || R.Version()$os == "mingw32") flush.console()
 
@@ -145,6 +152,8 @@ for (i in 1:runs) {
 timing <- cumulate/runs
 times[5, 1] <- timing
 cat(c("Linear regr. over a 3000x3000 matrix (c = a \\ b')___ (sec): ", timing, "\n"))
+t <- data.frame(test='Linear regr. over a 3000x3000 matrix', time = as.numeric(timing))
+df <- rbind(df, t)
 remove("a", "b", "c", "qra")
 if (R.Version()$os == "Win32" || R.Version()$os == "mingw32") flush.console()
 
@@ -169,6 +178,8 @@ for (i in 1:runs) {
 timing <- cumulate/runs
 times[1, 2] <- timing
 cat(c("FFT over 2,400,000 random values____________________ (sec): ", timing, "\n"))
+t <- data.frame(test='FFT over 2,400,000 random values', time = as.numeric(timing))
+df <- rbind(df, t)
 remove("a", "b")
 if (R.Version()$os == "Win32" || R.Version()$os == "mingw32") flush.console()
 
@@ -190,6 +201,8 @@ for (i in 1:runs) {
 timing <- cumulate/runs
 times[2, 2] <- timing
 cat(c("Eigenvalues of a 640x640 random matrix______________ (sec): ", timing, "\n"))
+t <- data.frame(test='Eigenvalues of a 640x640 random matrix', time = as.numeric(timing))
+df <- rbind(df, t)
 remove("a", "b")
 if (R.Version()$os == "Win32" || R.Version()$os == "mingw32") flush.console()
 
@@ -210,6 +223,8 @@ for (i in 1:runs) {
 timing <- cumulate/runs
 times[3, 2] <- timing
 cat(c("Determinant of a 2500x2500 random matrix____________ (sec): ", timing, "\n"))
+t <- data.frame(test='Determinant of a 2500x2500 random matrix', time = as.numeric(timing))
+df <- rbind(df, t)
 remove("a", "b")
 if (R.Version()$os == "Win32" || R.Version()$os == "mingw32") flush.console()
 
@@ -229,6 +244,8 @@ for (i in 1:runs) {
 timing <- cumulate/runs
 times[4, 2] <- timing
 cat(c("Cholesky decomposition of a 3000x3000 matrix________ (sec): ", timing, "\n"))
+t <- data.frame(test='Cholesky decomposition of a 3000x3000 matrix', time = as.numeric(timing))
+df <- rbind(df, t)
 remove("a", "b")
 if (R.Version()$os == "Win32" || R.Version()$os == "mingw32") flush.console()
 
@@ -248,6 +265,8 @@ for (i in 1:runs) {
 timing <- cumulate/runs
 times[5, 2] <- timing
 cat(c("Inverse of a 1600x1600 random matrix________________ (sec): ", timing, "\n"))
+t <- data.frame(test='Inverse of a 1600x1600 random matrix', time = as.numeric(timing))
+df <- rbind(df, t)
 remove("a", "b")
 if (R.Version()$os == "Win32" || R.Version()$os == "mingw32") flush.console()
 
@@ -272,6 +291,8 @@ for (i in 1:runs) {
 timing <- cumulate/runs
 times[1, 3] <- timing
 cat(c("3,500,000 Fibonacci numbers calculation (vector calc)(sec): ", timing, "\n"))
+t <- data.frame(test='3,500,000 Fibonacci numbers calculation', time = as.numeric(timing))
+df <- rbind(df, t)
 remove("a", "b", "phi")
 if (R.Version()$os == "Win32" || R.Version()$os == "mingw32") flush.console()
 
@@ -290,6 +311,8 @@ for (i in 1:runs) {
 timing <- cumulate/runs
 times[2, 3] <- timing
 cat(c("Creation of a 3000x3000 Hilbert matrix (matrix calc) (sec): ", timing, "\n"))
+t <- data.frame(test='Creation of a 3000x3000 Hilbert matrix', time = as.numeric(timing))
+df <- rbind(df, t)
 remove("a", "b")
 if (R.Version()$os == "Win32" || R.Version()$os == "mingw32") flush.console()
 
@@ -308,6 +331,8 @@ for (i in 1:runs) {
 timing <- cumulate/runs
 times[3, 3] <- timing
 cat(c("Grand common divisors of 400,000 pairs (recursion)__ (sec): ", timing, "\n"))
+t <- data.frame(test='Grand common divisors of 400,000 pairs', time = as.numeric(timing))
+df <- rbind(df, t)
 remove("a", "b", "c", "gcd2")
 if (R.Version()$os == "Win32" || R.Version()$os == "mingw32") flush.console()
 
@@ -330,6 +355,8 @@ for (i in 1:runs) {
 timing <- cumulate/runs
 times[4, 3] <- timing
 cat(c("Creation of a 500x500 Toeplitz matrix (loops)_______ (sec): ", timing, "\n"))
+t <- data.frame(test='Creation of a 500x500 Toeplitz matrix', time = as.numeric(timing))
+df <- rbind(df, t)
 remove("b", "j", "k")
 if (R.Version()$os == "Win32" || R.Version()$os == "mingw32") flush.console()
 
@@ -372,6 +399,8 @@ for (i in 1:runs) {
 }
 times[5, 3] <- timing
 cat(c("Escoufier's method on a 45x45 matrix (mixed)________ (sec): ", timing, "\n"))
+t <- data.frame(test="Escoufier's method on a 45x45 matrix", time = as.numeric(timing))
+df <- rbind(df, t)
 remove("x", "p", "vt", "vr", "vrt", "rvt", "RV", "j", "k")
 remove("x2", "R", "Rxx", "Ryy", "Rxy", "Ryx", "Rvmax", "Trace") 
 if (R.Version()$os == "Win32" || R.Version()$os == "mingw32") flush.console()
@@ -381,7 +410,10 @@ cat("                      --------------------------------------------\n")
 cat(c("                Trimmed geom. mean (2 extremes eliminated): ", exp(mean(log(times[2:4, 3]))), "\n\n\n"))
 
 cat(c("Total time for all 15 tests_________________________ (sec): ", sum(times), "\n"))
+t <- data.frame(test="Total time for all tests", time = as.numeric(sum(times)))
+df <- rbind(df, t)
 cat(c("Overall mean (sum of I, II and III trimmed means/3)_ (sec): ", exp(mean(log(times[2:4, ]))), "\n"))
 remove("cumulate", "timing", "times", "runs", "i")
 cat("                      --- End of test ---\n\n")   
 
+write.csv(df, file='results.csv', row.names=FALSE)

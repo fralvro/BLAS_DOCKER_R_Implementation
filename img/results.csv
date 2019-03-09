@@ -1,0 +1,17 @@
+"test","time"
+"Creation, transp., deformation of a 2500x2500 matrix",3.26999999999922
+"2400x2400 normal distributed random matrix ^1000",3.81333333333411
+"Sorting of 7,000,000 random values",2.93666666666589
+"2800x2800 cross-product matrix",1.143333333331
+"Linear regr. over a 3000x3000 matrix",0.616666666658906
+"FFT over 2,400,000 random values",1.37999999999496
+"Eigenvalues of a 640x640 random matrix",2.61999999999534
+"Determinant of a 2500x2500 random matrix",0.766666666672487
+"Cholesky decomposition of a 3000x3000 matrix",0.860000000005433
+"Inverse of a 1600x1600 random matrix",0.739999999990687
+"3,500,000 Fibonacci numbers calculation",3.08333333333333
+"Creation of a 3000x3000 Hilbert matrix",1.15999999998409
+"Grand common divisors of 400,000 pairs",1.13333333334109
+"Creation of a 500x500 Toeplitz matrix",0.22666666667404
+"Escoufier's method on a 45x45 matrix",2
+"Total time for all tests",25.7499999999806

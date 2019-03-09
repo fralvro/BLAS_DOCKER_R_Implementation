@@ -5,7 +5,7 @@ do
 case "${option}" in
 	t) T=${OPTARG};;
 	m) M=${OPTARG};;
-	h) cat /home/performance/scripts/help.txt; exit 1;;
+	h) cat /home/performance/extras/help.txt; exit 1;;
 	*) echo 'One or more arguments are incorrect. Use -h for more information'; exit 2;;
 esac
 done
