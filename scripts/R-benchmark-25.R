@@ -70,3 +70,12 @@ tiempo <- t1[1]+t2[1]+t3[1]+t4[1]+t5[1]+t6[1]+t6[1]+t8[1]
 cat(c("Total time for all tests_____________________________ (sec): ", tiempo, "\n"))
 cat(c("Mean of all tests____________________________________ (sec): ", tiempo/8, "\n"))
 cat("                      --- End of test ---\n\n") 
+
+df <- data.frame(test = c("2500x1 vector multiplication", "Matrix vector multiplication (2500x2500)",
+			  "Matrix matrix multiplication (2500x2500)", "Eigenvector of 2500x2500 matrix",
+                          "Inverse of 2500x2500 matrix", "Solving matrix equation system 2500x2500",
+			  "Principal components of 2500x2500 matrix", "Singular value decomposition of 2500x2500 matrix",
+			  "Total time for all tests"),
+		 time = c(t1[1],t2[1],t3[1],t4[1],t5[1],t6[1],t7[1],t8[1], tiempo))
+
+write.csv(df, file='/home/performance/img/results.csv', row.names=FALSE)

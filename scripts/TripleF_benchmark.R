@@ -30,7 +30,7 @@
 
 runs <- 3			# Number of times the tests are executed
 times <- rep(0, 15); dim(times) <- c(5,3)
-require(Matrix)		# Optimized matrix operations
+suppressMessages(require(Matrix))		# Optimized matrix operations
 #require(SuppDists)	# Optimized random number generators
 #Runif <- rMWC1019	# The fast uniform number generator
 Runif <- runif
@@ -416,4 +416,4 @@ cat(c("Overall mean (sum of I, II and III trimmed means/3)_ (sec): ", exp(mean(l
 remove("cumulate", "timing", "times", "runs", "i")
 cat("                      --- End of test ---\n\n")   
 
-write.csv(df, file='results.csv', row.names=FALSE)
+write.csv(df, file='/home/performance/img/results.csv', row.names=FALSE)

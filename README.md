@@ -8,7 +8,8 @@ To build the docker and run the performance tests, you need to clone this reposi
 
 ```shell
 docker build -t r-performance .
-docker run --rm -i -t -v my/repository/folder:/home/performance r-performance /bin/bash
+docker run --rm -it -v my/repository/folder:/home/performance r-performance
+
 ```
 If everything goes well, you will start in the bash system of the newly created docker image. Then, you can run the performance tests with the command:
 
@@ -17,6 +18,6 @@ test -args
 ```
 
 The arguments for this command are:
-* `-t` to select which test to run. Available options are `u` or `urbanek` for Urbanek's test and `lp` or `lopez-ruiz` for López and Ruiz test.
-* `-m` to select which BLAS package to use. Available options are `s` or `standard` for the default BLAS package, `o` or `openblas` for the OpenBLAS package, `a` or `atlas` for the Atlas package and `all` to run the test using all three packages.
+* `-t` to select which test to run. Available options are `u` or `urbanek` for Urbanek's test and `lr` or `lopez-ruiz` for López and Ruiz test.
+* `-m` to select which BLAS package to use. Available options are `s` or `standard` for the default BLAS package, `o` or `openblas` for the OpenBLAS package, `a` or `atlas` for the Atlas package and `all` to run the test using all three packages. You can also create a graph comparing the time for all tests, using the `graph` option.
 * `-h` to get more detailed descriptions of the arguments.

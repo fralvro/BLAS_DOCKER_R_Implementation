@@ -5,13 +5,13 @@ do
 case "${option}" in
 	t) T=${OPTARG};;
 	m) M=${OPTARG};;
-	h) cat /home/performance/scripts/help.txt; exit 1;;
+	h) cat /home/performance/extras/help.txt; exit 1;;
 	*) echo 'One or more arguments are incorrect. Use -h for more information'; exit 2;;
 esac
 done
 
 case ${T} in
-	lp|lopez|ruiz|lopez-ruiz) 
+	lr|lopez|ruiz|lopez-ruiz) 
 		TEST='/home/performance/scripts/R-benchmark-25.R';;
 	urbanek|u) 
 		TEST='/home/performance/scripts/TripleF_benchmark.R';;
@@ -30,8 +30,10 @@ case ${M} in
 	a|atlas) 
 		METHOD='/usr/lib/atlas-base/atlas/libblas.so.3';;
 	all)
-		echo ${TEST}
-		sh /home/performance/scripts/all_tests.sh ${TEST}		
+		sh /home/performance/scripts/all_tests.sh ${TEST} no	
+		exit;;
+	graph)
+		sh /home/performance/scripts/all_tests.sh ${TEST} yes
 		exit;;
 	*)
 		echo "Incorrect method chosen. Standard BLAS used by default. Use -h for more information."
@@ -42,6 +44,5 @@ esac
 
 update-alternatives --quiet --set libblas.so.3 ${METHOD}
 Rscript ${TEST}
-
-		
+rm /home/performance/img/results.csv
 
