@@ -16,7 +16,7 @@ if (nrow(a) == 16) {
     
     max_v <- round(max(t)+1)
     
-    png(filename = '/home/performance/img/results.png', 
+    png(filename = '/home/performance/img/urbanek_test_results.png', 
         width = 1600, height = 800,
         type='cairo')
     par(mai=c(1,5,1,1))
@@ -50,7 +50,7 @@ if (nrow(a) == 9) {
     
     max_v <- round(max(t)+1)
     
-    png(filename = '/home/performance/img/results.png', 
+    png(filename = '/home/performance/img/lopez_ruiz_test_results.png', 
         width = 1600, height = 800,
         type='cairo')
     par(mai=c(1,5,1,1))
